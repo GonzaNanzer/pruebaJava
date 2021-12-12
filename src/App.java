@@ -1,4 +1,6 @@
+import java.awt.Dimension;
 import java.awt.Rectangle;
+import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 
@@ -12,7 +14,9 @@ public class App {
 
 class ventana extends JFrame{
     public ventana(){
-        setBounds(new Rectangle(300,300,150,150));
+        Toolkit tk = Toolkit.getDefaultToolkit();
+        Dimension pantalla = tk.getScreenSize();
+        setBounds(new Rectangle(pantalla.width/4,pantalla.height/4,pantalla.width/2,pantalla.height/2));
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 }
