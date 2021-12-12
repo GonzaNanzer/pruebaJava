@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 
 public class App {
     public static void main(String[] args) {
-        System.out.println("Hello, World!");
+        //System.out.println("Hello, World!");
         ventana v = new ventana();
         v.setVisible(true);
     }
@@ -13,6 +13,7 @@ public class App {
 class ventana extends JFrame{
     public ventana(){
         setBounds(new Rectangle(300,300,150,150));
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 }
 
