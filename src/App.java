@@ -12,7 +12,7 @@ public class App {
 
 class ventana extends JFrame{
     public ventana(){
-        setBounds(new Rectangle(150,150,150,150));
+        setBounds(new Rectangle(300,300,150,150));
     }
 }
 
