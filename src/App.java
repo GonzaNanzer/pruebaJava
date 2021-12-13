@@ -1,10 +1,8 @@
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Rectangle;
-import java.awt.Toolkit;
+import java.awt.*;
+import javax.swing.*;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class App {
     public static void main(String[] args) {
@@ -16,19 +14,40 @@ public class App {
 
 class ventana extends JFrame{
     public ventana(){
-        Toolkit tk = Toolkit.getDefaultToolkit();
-        Dimension pantalla = tk.getScreenSize();
-        setBounds(new Rectangle(pantalla.width/4,pantalla.height/4,pantalla.width/2,pantalla.height/2));
-        setTitle("Que onda esta ventana");
-        add(new panel());
+        setBounds(new Rectangle(anchoPantalla/4,altoPantalla/4,anchoPantalla/2,altoPantalla/2));
+        setTitle("Configurador de dispositivos dis+ capacidad");
+        Image icono = tk.getImage("iconodismas.jpeg");
+        setIconImage(icono);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setResizable(false);
+        add(new panel());   
     }
+    Toolkit tk = Toolkit.getDefaultToolkit();
+    Dimension pantalla = tk.getScreenSize();
+    int anchoPantalla = pantalla.width;
+    int altoPantalla = pantalla.height;
 }
 
 class panel extends JPanel{
     public panel(){
-        setBackground(Color.BLACK);
+        setBackground(new Color(28,103,143));
+        setLayout(new BorderLayout());
+        JPanel panelConexion = new JPanel();
+        panelConexion.setBackground(null);
+        conectar.addActionListener(new oyenteConexion());
+        desconectar.addActionListener(new oyenteConexion());
+        panelConexion.add(conectar);
+        panelConexion.add(desconectar);
+        add(panelConexion,BorderLayout.NORTH);
     }
+    private class oyenteConexion implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            JOptionPane.showMessageDialog(null, "Apretaste el boton", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+    JButton conectar = new JButton("Conectar");
+    JButton desconectar = new JButton("Desconectar");
 }
 
 
